@@ -1,26 +1,25 @@
-//log in or landing page
+//home.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import needed components from components/ui?- button, card, etc.
-//import CSS
+import "./home.css";
 
 const Home = () => {
     const navigate = useNavigate();
     const [email, setEmail]= useState("");
     const [password,setPassword]= useState("");
-}
 
 const handleLogin= (e: React.FormEvent)=> {
     e.preventDefault();
     //api call for authenticaion logic???
-    console.log( "logged in with:" email, password);
+    console.log( "logged in with:", email, password);
     navigate("/resumeInput");
 };
 
 return(
     <div>
         <h1 className = "title">ResuMate</h1>
-        <h2 className= "tagLine">Get Noticed. Get Hired. Get ResuMate</h2>
+        <h2 className= "tagLine">Get Noticed. Get Hired. Get ResuMate.</h2>
         <card className = "logIn">
             <h2>Log In or Create an Account</h2>
             <form onSubmit={handleLogin}>
@@ -46,6 +45,7 @@ return(
             <p>"ResuMate saved my life."- Marc S., Pennsylvania</p>
         </card>
     </div>
-)
+);
+};
 
 export default Home;
