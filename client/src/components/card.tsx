@@ -1,4 +1,6 @@
 import React from "react";
+import { Card as BootstrapCard} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface CardProps {
   children: React.ReactNode;
@@ -6,7 +8,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ children, className = "" }) => {
-  return <div className={`card ${className}`}>{children}</div>;
+  return <BootstrapCard className={`card ${className}`}>{children}</BootstrapCard>;
 };
 
 export default Card;
