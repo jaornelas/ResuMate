@@ -1,8 +1,7 @@
 //home.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from 'react-bootstrap';
-import { Card } from "react-bootstrap";
+import {Button, card, cardContent, Nav }from "../components";
 //import needed components from components/ui?- button, card, etc.
 import "./home.css";
 
