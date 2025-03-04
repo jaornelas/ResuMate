@@ -1,5 +1,6 @@
 import React from "react";
 import { Button as BootstrapButton } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset"; // Allows different button types
