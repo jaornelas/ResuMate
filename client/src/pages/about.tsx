@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Button, card, cardContent }from ".components/";
+import {Button, card, cardContent }from "./components";
 import "./about.css"
 //import components
 //import CSS
