@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {Button, card, cardContent, Nav }from "../components";
+import {Button, card, cardContent }from ".components/";
+import "./about.css"
 //import components
 //import CSS
 
@@ -32,22 +33,24 @@ const About = () => {
         <card className= "report-issue">
             <h2>Report an Issue</h2>
             <p>Encountered a problem? Let us know!</p>
-            <form onSubmit={handleSubmit} class name= "issue-form">
+            <cardContent onSubmit={handleSubmit} class name= "issue-form">
                 <Input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
-                //onChange
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 />
                 <Textarea
                 placeholder= "Please describe the issue you've encountered."
                 value={issue}
-                //onChange
+                onChange={(e) => setIssue(e.target.value)}
+                required
                 />
                 <Button type= "submit">
                     Submit Issue
                 </Button>
-            </form>
+            </cardContent>
         </card>
     </div>
     );  };
