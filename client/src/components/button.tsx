@@ -1,4 +1,5 @@
 import React from "react";
+import { Button as BootstrapButton } from 'react-bootstrap';
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset"; // Allows different button types
@@ -18,14 +19,14 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
 }) => {
   return (
-    <button
+    <BootstrapButton
       className={`btn ${variant} ${size}`}
       type={type}
       onClick={onClick}
       disabled={disabled}
     >
       {children}
-    </button>
+    </BootstrapButton>
   );
 };
 
