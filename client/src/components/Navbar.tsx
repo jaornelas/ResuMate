@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
@@ -14,47 +15,47 @@ function Navbar() {
               : "nav-link link-light fs-2"
           }
         >
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/about"
+          className={
+            currentPage === "/about"
+              ? "nav-link link-success fs-2"
+              : "nav-link link-light fs-2"
+          }
+        >
           About
         </Link>
       </li>
       <li className="nav-item">
         <Link
-          to="/portfolio"
+          to="/resumeInput"
           className={
-            currentPage === "/portfolio"
+            currentPage === "/resumeInput"
               ? "nav-link link-success fs-2"
               : "nav-link link-light fs-2"
           }
         >
-          Portfolio
+          Resume Input
         </Link>
       </li>
       <li className="nav-item">
         <Link
-          to="/contact"
+          to="/coverLetter"
           className={
-            currentPage === "/contact"
+            currentPage === "/coverLetter"
               ? "nav-link link-success fs-2"
               : "nav-link link-light fs-2"
           }
         >
-          Contact
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
-          to="/resume"
-          className={
-            currentPage === "/resume"
-              ? "nav-link link-success fs-2"
-              : "nav-link link-light fs-2"
-          }
-        >
-          Resume
+          Cover Lettter
         </Link>
       </li>
     </ul>
   );
 }
 
-export default Nav;
+export default Navbar;
