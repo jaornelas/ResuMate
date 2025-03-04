@@ -13,12 +13,14 @@
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
     "bcryptjs": "^3.0.2",
+    "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.9",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1"
   },
