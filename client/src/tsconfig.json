@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",          // Use latest JavaScript features
+      "module": "ESNext",          // ES Module system
+      "jsx": "react-jsx",          // Enables JSX support for React
+      "strict": true,              // Enable strict type-checking
+      "allowJs": true,             // Allow importing .js/.jsx files
+      "moduleResolution": "node",  // Resolve modules like Node.js
+      "resolveJsonModule": true,   // Allow importing JSON files
+      "isolatedModules": true,     // Required for Vite
+      "skipLibCheck": true,        // Skip checking declaration files
+      "forceConsistentCasingInFileNames": true // Ensure case-sensitive imports
+    },
+    "include": ["src"],            // Include the `src` directory
+    "exclude": ["node_modules", "dist"] // Exclude unnecessary files
+  }
+  
