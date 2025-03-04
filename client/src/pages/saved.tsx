@@ -1,13 +1,13 @@
 //saved resumes and cover letters
 import { useState, useEffect } from "react";
-import { Button, Card, CardContent } from "../components";
+import { Button, Card, CardContent } from "./components";
 import "./saved.css"; // Import CSS for styling
 
 interface Resume {
   id: number;
-  title: string;
-  updatedAt: string;
-  fileUrl: string; // URL to download the resume
+  name: string;
+  email: string;
+  experience: string;
 }
 
 const Saved = () => {
@@ -15,11 +15,12 @@ const Saved = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  //fetch saved resumes from the backend when the component loads
   useEffect(() => {
-    fetch("http://localhost:5000/api/resumes") // Adjust API URL if needed
+    fetch("http://localhost:5000/api/resumes") // fetch from sequelize api
       .then((response) => response.json())
       .then((data) => {
-        setResumes(data);
+        setResumes(data); //stores resume
         setLoading(false);
       })
       .catch((err) => {
@@ -29,6 +30,8 @@ const Saved = () => {
       });
   }, []);
 
+
+//deletes a resume
   const handleDelete = async (id: number) => {
     try {
       const response = await fetch(`http://localhost:5000/api/resumes/${id}`, {
@@ -36,7 +39,7 @@ const Saved = () => {
       });
 
       if (response.ok) {
-        setResumes(resumes.filter((resume) => resume.id !== id));
+        setResumes(resumes.filter((resume) => resume.id !== id));//removes deleted resume
       } else {
         console.error("Failed to delete resume.");
       }
@@ -47,7 +50,7 @@ const Saved = () => {
 
   return (
     <div className="saved-container">
-      <h1 className="title">Saved Resumes</h1>
+      <h1>Saved Resumes</h1>
       {loading && <p>Loading saved resumes...</p>}
       {error && <p className="error">{error}</p>}
       {resumes.length === 0 && !loading && <p>No saved resumes found.</p>}
@@ -56,16 +59,11 @@ const Saved = () => {
         {resumes.map((resume) => (
           <Card key={resume.id} className="resume-card">
             <CardContent>
-              <h2 className="resume-title">{resume.title}</h2>
-              <p className="resume-date">Last Updated: {new Date(resume.updatedAt).toLocaleDateString()}</p>
-              <div className="resume-actions">
-                <Button onClick={() => window.open(resume.fileUrl, "_blank")}>
-                  Download
-                </Button>
-                <Button onClick={() => handleDelete(resume.id)} className="delete-btn">
-                  Delete
-                </Button>
-              </div>
+              <h2>{resume.name}</h2>
+              <p>Email: {resume.email}</p>
+              <p>Experience: {resume.experience}</p>
+              <p>Last Updated: {new Date(resume.updatedAt).toLocaleDateString()}</p>
+              <Button onClick={() => handleDelete(resume.id)}>Delete</Button>
             </CardContent>
           </Card>
         ))}
