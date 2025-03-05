@@ -24,7 +24,7 @@ export const getResumes = async (req: Request, res: Response) => {
  */
 export const saveResume = async (req: Request, res: Response) => {
   const { name, email, experience } = req.body;
-  const userID = req.body.userID; //Get user id from jwt middleware
+  const userId = req.body.userID; //Get user id from jwt middleware
 
   if (!name || !email || !experience) {
     return res.status(400).json({ error: "All fields are required" });
