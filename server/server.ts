@@ -3,8 +3,8 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import sequelize from './config/database'; // Sequelize DB connection
-import authRoutes from '../routes/authRoutes'; // Auth routes
-import resumeRoutes from '../routes/resumeRoutes'; // Resume routes
+import authRoutes from './routes/authRoutes'; // Auth routes
+import resumeRoutes from './routes/resumeRoutes'; // Resume routes
 
 const app = express();
 const PORT: number = Number(process.env.PORT) || 5000;

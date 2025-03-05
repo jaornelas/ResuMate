@@ -16,5 +16,5 @@
       "noEmit": true,                           // Do not emit outputs
       "jsx": "react"                            // Specify JSX code generation
     },
-    "include": ["client/src", "server/src", "client/vite.config.ts", "server/db/models", "server/routes"]     // Specify directories to include in the compilation
+    "include": ["client/src", "server/src", "client/vite.config.ts", "server/db/models", "server/routes", "server/server.ts"]     // Specify directories to include in the compilation
   }
