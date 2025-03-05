@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/react-router-dom": "^5.3.3",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
@@ -30,7 +31,8 @@
     "pg": "^8.13.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "sequelize": "^6.37.6"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",
