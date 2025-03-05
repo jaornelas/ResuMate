@@ -8,17 +8,24 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC = ({ children }) => {
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState<any>(null);
 
     const login = (data: any) => {
         setIsAuthenticated(true);
-        // Optionally store user data in localStorage or state
+        setUser(data.user);
+        localStorage.setItem('token', data.token);
     };
 
     const logout = () => {
         setIsAuthenticated(false);
-        // Optionally remove user data from localStorage or state
+        setUser(null);
+        localStorage.removeItem('token');
     };
 
     return (
