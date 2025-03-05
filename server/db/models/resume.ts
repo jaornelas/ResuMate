@@ -1,9 +1,11 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "//where is sequelize coming from???";//import db connection
+import sequelize from "../../db";//import db connection
+import User from "../models/user"
 
 //define structure of resume in table in psql
 class Resume extends Model {
   public id!: number;
+  public userId!: number; //user id to make sure it is correct user. 
   public name!: string;
   public email!: string;
   public experience!: string;
@@ -16,6 +18,14 @@ Resume.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User, //links to the User model
+        key: "id",
+      },
     },
     name: {
       type: DataTypes.STRING,
@@ -37,5 +47,8 @@ Resume.init(
     timestamps: true,
   }
 );
+//one user can have many resumes 
+User.hasMany(Resume, { foreignKey: "userId", onDelete: "CASCADE" });
+Resume.belongsTo(User, { foreignKey: "userId" });
 
 export default Resume;
