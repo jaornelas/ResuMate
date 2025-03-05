@@ -1,6 +1,7 @@
 import { useState } from "react";
-import {Button, card, cardContent }from "./components";
+import { Button, Card, CardContent, Input, Textarea } from "../components";
 import "./about.css"
+import React from "react";
 //import components
 //import CSS
 
@@ -9,7 +10,7 @@ const About = () => {
     const [email, setEmail]= useState("");
     const [message, setMessage]= useState("");
 
-    const handleSubmit= (email.React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if(!email || !issue ){
             setMessage("Please fill in all required fields.");
@@ -30,15 +31,15 @@ const About = () => {
           tools analyze your resume, suggest optimizations, and help you stand
           out in the job market.</p>
         </div>
-        <card className= "report-issue">
+        <Card className= "report-issue">
             <h2>Report an Issue</h2>
             <p>Encountered a problem? Let us know!</p>
-            <cardContent onSubmit={handleSubmit} class name= "issue-form">
+            <CardContent onSubmit={handleSubmit} className= "issue-form">
                 <Input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
                 required
                 />
                 <Textarea
@@ -50,9 +51,10 @@ const About = () => {
                 <Button type= "submit">
                     Submit Issue
                 </Button>
-            </cardContent>
-        </card>
+            </CardContent>
+        </Card>
     </div>
-    );  };
+    ); 
+}
 
 export default About;
