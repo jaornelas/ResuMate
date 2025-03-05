@@ -1,4 +1,3 @@
-//user authentication here
 import {
   Model,
   type InferAttributes,
