@@ -3,11 +3,11 @@ import bcrypt from "bcrypt";
 
 export const userSeeds = async () => {
   const users = [
-    { username: "User1", password: "password1", email: "User1Test@email.com" },
-    { username: "User2", password: "password2", email: "User2Test@email.com" },
-    { username: "User3", password: "password3", email: "User3Test@email.com" },
-    { username: "User4", password: "password4", email: "User4Test@email.com" },
-    { username: "User5", password: "password5", email: "User5Test@email.com" },
+    { password: "password1", email: "User1Test@email.com" },
+    { password: "password2", email: "User2Test@email.com" },
+    { password: "password3", email: "User3Test@email.com" },
+    { password: "password4", email: "User4Test@email.com" },
+    { password: "password5", email: "User5Test@email.com" },
   ];
   
   const hashedUsers = [];
@@ -19,7 +19,7 @@ export const userSeeds = async () => {
         password: bcrypt.hashSync(user.password, 10),
       });
     } catch (error) {
-      console.error(`Error hashing password for user ${user.username}:`, error);
+      console.error(`Error hashing password for user with email of ${user.email}:`, error);
     }
   }
 
