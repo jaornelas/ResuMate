@@ -9,7 +9,9 @@ CREATE TABLE users (
 -- Create resumes table
 CREATE TABLE resumes (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
-    content TEXT NOT NULL,
+    userId INTEGER REFERENCES users(id),
+    [name] TEXT NOT NULL,
+    experience TEXT NOT NULL,
+    email TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
