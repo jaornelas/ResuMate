@@ -18,34 +18,33 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   }
 }
 //initialize user model
-export function userCreation(sequelize: Sequelize) {
-  User.init(
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: "Please enter a password",
-          },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Please enter a password",
         },
       },
     },
-    {
-      sequelize,
+  },
+  {
+    sequelize,
     modelName: "user",
     tableName: "users",
     timestamps: false,
