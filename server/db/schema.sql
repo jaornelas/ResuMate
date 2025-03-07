@@ -10,7 +10,7 @@ CREATE TABLE users (
 CREATE TABLE resumes (
     id SERIAL PRIMARY KEY,
     userId INTEGER REFERENCES users(id),
-    [name] TEXT NOT NULL,
+    "name" TEXT NOT NULL,
     experience TEXT NOT NULL,
     email TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
