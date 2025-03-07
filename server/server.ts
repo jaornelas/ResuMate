@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import cors from 'cors';
-import sequelize from './db'; // Sequelize DB connection
+import sequelize from './db/config/connection'; // Sequelize DB connection
 import authRoutes from './routes/authRoutes'; // Auth routes
 import resumeRoutes from './routes/resumeRoutes'; // Resume routes
 

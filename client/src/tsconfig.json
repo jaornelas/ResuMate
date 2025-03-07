@@ -9,7 +9,11 @@
       "resolveJsonModule": true,   // Allow importing JSON files
       "isolatedModules": true,     // Required for Vite
       "skipLibCheck": true,        // Skip checking declaration files
-      "forceConsistentCasingInFileNames": true // Ensure case-sensitive imports
+      "forceConsistentCasingInFileNames": true, // Ensure case-sensitive imports
+      "baseUrl": ".",              // Set baseUrl to the root directory
+      "paths": {
+        "*" : ["src/*"]
+      }
     },
     "include": ["src"],            // Include the `src` directory
     "exclude": ["node_modules", "dist"] // Exclude unnecessary files
