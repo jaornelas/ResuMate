@@ -10,7 +10,6 @@ import sequelize from '../config/connection';
     
 export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>;
-  declare username: string;
   declare email: string;
   declare password: string;
   
