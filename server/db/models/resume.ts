@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../../db";//import db connection
+import sequelize from "../config/connection";//import db connection
 import User from "../models/user"
 
 //define structure of resume in table in psql
@@ -47,8 +47,5 @@ Resume.init(
     timestamps: true,
   }
 );
-//one user can have many resumes 
-User.hasMany(Resume, { foreignKey: "userId", onDelete: "CASCADE" });
-Resume.belongsTo(User, { foreignKey: "userId" });
 
 export default Resume;
