@@ -1,6 +1,6 @@
 //input user info
 import { useState } from "react";
-import { Button, Card, CardContent } from "./components";
+import { Button, Card, CardContent } from "../components";
 
 const ResumeInput = () => {
     //store user input for the resume
