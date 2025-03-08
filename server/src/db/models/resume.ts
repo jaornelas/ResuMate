@@ -1,14 +1,14 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection";//import db connection
-import User from "../models/user"
+import User from "./user"
 
 //define structure of resume in table in psql
 class Resume extends Model {
-  public id!: number;
-  public userId!: number; //user id to make sure it is correct user. 
-  public name!: string;
-  public email!: string;
-  public experience!: string;
+  declare id: number;
+  declare userId: number; //user id to make sure it is correct user. 
+  declare name: string;
+  declare email: string;
+  declare experience: string;
 }
 
 //initialize the resume model

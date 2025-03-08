@@ -23,8 +23,6 @@ export const userSeeds = async () => {
     }
   }
 
-  console.log('hashedUsers', hashedUsers);
-
   try {
     await User.bulkCreate(hashedUsers, { individualHooks: true, validate: true });
     console.log('Users seeded successfully');
