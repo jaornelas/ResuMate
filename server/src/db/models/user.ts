@@ -12,11 +12,8 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare id: CreationOptional<number>;
   declare email: string;
   declare password: string;
-  
-  async setEmailToLowerCase() {
-    this.email = this.email.toLowerCase();
-  }
 }
+
 //initialize user model
 User.init(
   {
@@ -49,14 +46,6 @@ User.init(
     tableName: "users",
     timestamps: false,
     underscored: true,
-    hooks: {
-      beforeCreate: async (newUser) => {
-        await newUser.setEmailToLowerCase();
-      },
-      beforeUpdate: async (updatedUser) => {
-        await updatedUser.setEmailToLowerCase();
-      },
-    },
   }
 );
 

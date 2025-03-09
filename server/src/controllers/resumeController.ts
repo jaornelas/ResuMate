@@ -1,6 +1,6 @@
 //handles resume logic like saving, deleting, retrieving
 import { Request, Response } from "express";
-import Resume from "../db/models/Resume"; // Import the Resume model
+import Resume from "../db/models/resume"; // Import the Resume model
 
 /**
  * @desc Get all resumes
@@ -23,16 +23,16 @@ export const getResumes = async (req: Request, res: Response) => {
  * @access Private (Requires JWT)
  */
 export const saveResume = async (req: Request, res: Response) => {
-  const { name, email, experience } = req.body;
-  const userId = req.body.userID; //Get user id from jwt middleware
+  const { name, email, experience, userId } = req.body;
 
   if (!name || !email || !experience) {
-    return res.status(400).json({ error: "All fields are required" });
+    res.status(400).json({ error: "All fields are required" });
+    return;
   }
 
   try {
-    const newResume = await Resume.create({ name, email, experience });
-    res.status(201).json(newResume);
+    const newResume = await Resume.create({ name, email, experience, userId });
+    res.status(200).json({resume: newResume});
   } catch (error) {
     console.error("Error saving resume:", error);
     res.status(500).json({ error: "Failed to save resume" });
@@ -54,12 +54,14 @@ export const deleteResume = async (req: Request, res: Response) => {
   
       // If the resume doesn't exist, return a 404 Not Found error
       if (!resume) {
-        return res.status(404).json({ error: "Resume not found" });
+        res.status(404).json({ error: "Resume not found" });
+        return;
       }
   
       // Ensure the resume belongs to the authenticated user
       if (resume.userId !== userId) {
-        return res.status(403).json({ error: "You are not authorized to delete this resume" });
+         res.status(403).json({ error: "You are not authorized to delete this resume" });
+         return;
       }
   
       // Delete the resume from the database
