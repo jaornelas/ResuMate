@@ -5,6 +5,7 @@
       "jsx": "react-jsx",          // Enables JSX support for React
       "strict": true,              // Enable strict type-checking
       "allowJs": true,             // Allow importing .js/.jsx files
+      "allowSyntheticDefaultImports": true,
       "moduleResolution": "node",  // Resolve modules like Node.js
       "resolveJsonModule": true,   // Allow importing JSON files
       "isolatedModules": true,     // Required for Vite
