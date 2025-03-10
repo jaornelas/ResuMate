@@ -13,4 +13,4 @@ function Header() {
 
 }
 
-export default Hooter;
+export default Header;
