@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "bootstrap": "^5.2.3",
+    "crypto-js": "^4.2.0",
     "graphql": "^16.6.0",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
