@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import "./home.css";
 
 const Home = () => {
-    console.log('Home component rendered');
+    //console.log('Home component rendered');
 
     const navigate = useNavigate();
     const { login } = useAuth();
@@ -15,7 +15,7 @@ const Home = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch("/api/authenticate", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

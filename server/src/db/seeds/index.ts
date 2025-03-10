@@ -7,7 +7,7 @@ import { createDatabase } from "./createDatabase.js"; // Import the createDataba
 // Ensure to seed the imported models when added
 const seedAll = async (): Promise<void> => {
   try {
-    await createDatabase();
+    //await createDatabase();
     await sequelize.sync({ force: true });
     console.log("\nDB SYNCED\n");
 

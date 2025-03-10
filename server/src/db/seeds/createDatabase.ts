@@ -13,7 +13,7 @@ export const createDatabase = async () => {
 
   try {
     await client.connect();
-    await client.query('CREATE DATABASE resumate_db');
+    await client.query('CREATE DATABASE resumate');
     console.log('Database created successfully');
   } catch (error) {
     console.error('Error creating database:', error);
