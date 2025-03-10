@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, cardContent, Nav, Input } from "../components";
+import { Button, Card, CardContent, Navbar, Input } from "../components";
 import { useAuth } from "../context/AuthContext";
 import "./home.css";
 
 const Home = () => {
+    console.log('Home component rendered');
+
     const navigate = useNavigate();
     const { login } = useAuth();
     const [email, setEmail] = useState("");
@@ -45,13 +47,13 @@ const Home = () => {
                         type="email"
                         placeholder="Enter your email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     />
                     <Input
                         type="password"
                         placeholder="Enter your password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     />
                     <Button type="submit">Log In</Button>
                     <p>Don't have an account?</p>
