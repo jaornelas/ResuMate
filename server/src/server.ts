@@ -5,6 +5,8 @@ import cors from 'cors';
 import sequelize from './db/config/connection'; // Sequelize DB connection
 import routes from './routes'; // Import all routes
 import path from 'path';
+import { createDatabase } from './db/seeds/createDatabase'; // Import createDatabase function
+
 
 const app = express();
 const PORT: number = Number(process.env.PORT) || 5001;
@@ -17,9 +19,9 @@ app.use(express.json());
 app.use('/api', routes);
 
 // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, '../../client/dist')));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Basic API status route
 app.get('/', (req, res) => {
@@ -27,15 +29,23 @@ app.get('/', (req, res) => {
 });
 
 // Catch-all route to serve the React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'));
+});
 
 // Connect to PostgreSQL (Sequelize)
-sequelize.sync({ alter: true })
-  .then(() => console.log('Database synced with Sequelize'))
-  .catch(err => console.error('Sequelize sync error:', err));
+const startServer = async () => {
+  try {
+    //await createDatabase(); // Ensure the database is created
+    await sequelize.sync({ alter: true });
+    console.log('Database synced with Sequelize');
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Sequelize sync error:', err);
+  }
+};
+
+startServer();
