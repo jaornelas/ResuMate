@@ -56,7 +56,7 @@ const Home = () => {
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     />
                     <Button type="submit">Log In</Button>
-                    <p>Don't have an account?</p>
+                    <p>Don't have an account?<span onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: "blue" }}>Sign up</span></p>
                 </form>
             </Card>
             <Card className="testimonials">
