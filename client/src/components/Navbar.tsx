@@ -40,6 +40,18 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link
+                to="/resumeInput"
+                className={
+                  currentPage === "/resumeInput"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Resume Input
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
                 to="/contact"
                 className={
                   currentPage === "/contact"
