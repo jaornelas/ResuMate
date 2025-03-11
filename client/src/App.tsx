@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import Home from './pages/home';
 import About from './pages/about'
 import ResumeInput from './pages/resumeInput';
+import Signup from "./pages/Signup";
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/resumeInput" element={<ResumeInput />} />
+                    <Route path="/signup" element={<Signup/>}/> {/*new signup page */}
                 </Routes>
             </Router>
         </AuthProvider>
