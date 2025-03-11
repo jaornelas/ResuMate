@@ -26,7 +26,7 @@ Integrates technologies such as CSS Bootstrap, OpenAI, JWT encryption, TypeScrip
 
 ## Image of Site
 
-
+![ResuMate](Assets/Screenshot%202025-03-10%20at%207.45.07 PM.png)
 
 
 
