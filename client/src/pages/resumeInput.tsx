@@ -1,6 +1,9 @@
 //input user info
 import { useState } from "react";
-import { Button, Card, CardContent } from "./components";
+import { Button, Card, CardContent, Navbar, Header } from "../components";
+import "./resumeInput.css"; // Import the CSS file
+import "../components/Navbar.css"
+
 
 const ResumeInput = () => {
     //store user input for the resume
@@ -10,8 +13,12 @@ const ResumeInput = () => {
     experience: "",
   });
 
+//store AI prompt response
+const [aiResponse, setAiResponse] = useState("");
+
   //handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    console.log(e.target);
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
   };
 
@@ -19,7 +26,7 @@ const ResumeInput = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/resumes", {
+      const response = await fetch("/api/resumes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resumeData),//send data to sequelize db
@@ -36,9 +43,36 @@ const ResumeInput = () => {
     }
   };
 
+  //Call AI API to help create content for resume
+  const generateWithAI = async () => {
+    const fullPrompt= ` Using the provided user information, please create a clean, well-structured, easy-to-read resume with clear section headers.
+      Make sure it is optimized for Applicant Tracking Systems. Highlight the user’s strengths.
+      Use strong action words and focus on measurable achievements.
+      Include a brief 2-3 sentence summary that highlights experience, key skills, and user career goals when applicable.
+
+      User Information:
+      - Name: ${resumeData.name}
+      - Email: ${resumeData.email}
+      - Experience: ${resumeData.experience}`;
+    try{
+      const response = await fetch("/api/ai/generate", {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({prompt: fullPrompt}),
+      });
+    
+      const data= await response.json();
+      setAiResponse(data.text || "Failed to generate content.");
+    } catch (error) {
+      console.error("AI Error:", error);
+      setAiResponse("Error generating AI response.");
+    }
+  };
+
   return (
     <div>
-      <h1>Resume Input</h1>
+      <Navbar/>
+      <h1>User Input</h1>
       <Card>
         <CardContent>
           <form onSubmit={handleSubmit}>
@@ -48,7 +82,7 @@ const ResumeInput = () => {
               placeholder="Full Name"
               value={resumeData.name}
               onChange={handleChange}
-              required
+              
             />
             <input
               type="email"
@@ -56,17 +90,31 @@ const ResumeInput = () => {
               placeholder="Email Address"
               value={resumeData.email}
               onChange={handleChange}
-              required
+              
             />
             <textarea
               name="experience"
               placeholder="Work Experience"
               value={resumeData.experience}
               onChange={handleChange}
-              required
+            
             />
             <Button type="submit">Save Resume</Button>
           </form>
+        </CardContent>
+      </Card>
+
+      {/*AI Prompt Integration */}
+      <Card>
+        <CardContent>
+          <h2>Generate Resume</h2>
+          <Button onClick={generateWithAI}>Generate Resume</Button>
+          {aiResponse && (
+            <div>
+              <h3>AI-Generated Resume:</h3>
+              <div dangerouslySetInnerHTML={{ __html: aiResponse }} />
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

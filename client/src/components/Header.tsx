@@ -1,16 +1,18 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./Navbar"
 
 function Header() {
     return(
-        <header>
+        <div>
             <Container>
-
+            <h1>ResuMate</h1>
+            <Navbar/>
             </Container>
-        </header>
+        </div>
     )
 
 }
 
-export default Hooter;
+export default Header;

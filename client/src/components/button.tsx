@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "outline"; // Button styles
   size?: "small" | "medium" | "large"; // Button size
   disabled?: boolean; // Disables button if true
+  className?: string; //add the className prop
 }
 
 const Button: React.FC<ButtonProps> = ({

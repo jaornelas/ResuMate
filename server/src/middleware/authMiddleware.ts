@@ -5,22 +5,28 @@ import jwt from "jsonwebtoken";
 const SECRET_KEY: string = process.env.SECRET_KEY || "your_jwt_secret";
 
 // verify token
-const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   // get token from auth header
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ error: "Unauthorized: No token provided" });
+     res.status(401).json({ error: "Unauthorized: No token provided" });
+     return;
   }
 
   const token = authHeader.split(" ")[1]; // extract token
 
+
   try {
     const decoded = jwt.verify(token, SECRET_KEY) as { userId: number };
-    req.body.userId = decoded.userId; // attach user id
-    next();
+
+    if (decoded) {
+      req.body.userId = decoded.userId; // attach user id
+      next();
+    }
   } catch (error) {
-    return res.status(403).json({ error: "Forbidden: Invalid token" });
+     res.status(403).json({ error: "Forbidden: Invalid token" });
+     return;
   }
 };
 
