@@ -1,7 +1,8 @@
 //input user info
 import { useState } from "react";
-import { Button, Card, CardContent, Navbar } from "../components";
+import { Button, Card, CardContent, Navbar, Header } from "../components";
 import "./resumeInput.css"; // Import the CSS file
+import "../components/Navbar.css"
 
 
 const ResumeInput = () => {
@@ -71,7 +72,7 @@ const [aiResponse, setAiResponse] = useState("");
   return (
     <div>
       <Navbar/>
-      <h1>Resume Input</h1>
+      <h1>User Input</h1>
       <Card>
         <CardContent>
           <form onSubmit={handleSubmit}>
@@ -111,7 +112,7 @@ const [aiResponse, setAiResponse] = useState("");
           {aiResponse && (
             <div>
               <h3>AI-Generated Resume:</h3>
-              <p>{aiResponse}</p>
+              <div dangerouslySetInnerHTML={{ __html: aiResponse }} />
             </div>
           )}
         </CardContent>

@@ -78,3 +78,43 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
+
+  .title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #007BFF, #00C897);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Resume styles */
+.resume {
+    font-family: 'Georgia', serif;
+    color: #333;
+  }
+  
+  .resume h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  .resume p {
+    margin: 5px 0;
+  }
+  
+  .resume .section {
+    margin-bottom: 20px;
+  }
+  
+  .resume .section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .resume .section-content {
+    padding-left: 20px;
+  }

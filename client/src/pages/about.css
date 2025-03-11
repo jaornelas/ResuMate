@@ -7,7 +7,7 @@ body {
   }
   
   /* Container for the page */
-  .container {
+  .about-container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
@@ -17,50 +17,60 @@ body {
   }
   
   /* Header styles */
-  .title {
+  .about-content h1 {
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     background: linear-gradient(90deg, #007BFF, #00C897);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
-  .tagLine {
-    text-align: center;
-    font-size: 1.5rem;
+  /* Description styles */
+  .description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1.2rem;
     color: #555;
+    text-align: center;
     margin-bottom: 30px;
   }
-  
   /* Card styles */
-  .card {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
+.report-issue {
+    margin-top: 30px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f9f9f9;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .logIn {
+  .report-issue h2 {
     text-align: center;
-  }
-  
-  .logIn h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
   }
   
-  .logIn form {
+  .issue-form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .logIn input {
+  .input-field,
+  .textarea-field {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -70,7 +80,13 @@ body {
     max-width: 300px;
   }
   
-  .logIn button {
+  .input-field:focus,
+  .textarea-field:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .submit-button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -80,47 +96,12 @@ body {
     font-size: 16px;
   }
   
-  .logIn button:hover {
+  .submit-button:hover {
     background-color: #0056b3;
   }
   
-  .logIn p {
+  .message {
+    text-align: center;
+    color: green;
     margin-top: 10px;
-  }
-  
-  .logIn p span {
-    cursor: pointer;
-    color: #007bff;
-  }
-  
-  .logIn p span:hover {
-    text-decoration: underline;
-  }
-  
-  /* Testimonials styles */
-  .testimonials {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .testimonials p {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .testimonials p::before {
-    content: "“";
-    font-size: 2rem;
-    vertical-align: top;
-    color: #007bff;
-  }
-  
-  .testimonials p::after {
-    content: "”";
-    font-size: 2rem;
-    vertical-align: bottom;
-    color: #007bff;
   }
