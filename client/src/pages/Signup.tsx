@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardContent } from "../components";
+import Navbar from "../components/Navbar"; // Import the Navbar component
+import "../components/Navbar.css"
 
 const Signup = () => {
   const navigate = useNavigate();
-  
+
   // Store user input
   const [formData, setFormData] = useState({
     email: "",
@@ -40,6 +42,7 @@ const Signup = () => {
 
   return (
     <div>
+      <Navbar />
       <h1>Sign Up</h1>
       <Card>
         <CardContent>

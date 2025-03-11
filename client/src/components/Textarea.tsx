@@ -5,6 +5,7 @@ interface TextareaProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     required?: boolean;
+    className?: string; //add className prop
 }
 
 const Textarea: React.FC<TextareaProps> = ({ placeholder, value, onChange, required }) => {
