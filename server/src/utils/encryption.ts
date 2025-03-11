@@ -24,15 +24,22 @@ export const encrypt = (text: string): string => {
 
 // Decrypt Function
 export const decrypt = (encryptedText: string): string => {
-  // Removes the randomness (IV) from encrypted text to decrypt
-  const [iv, encrypted] = encryptedText.split(":");
-  // Create a decipher object using the algorithm, secret key, and IV
-  // Syntax: crypto.createDecipheriv(algorithm, key, iv)
-  // Buffer.from converts the string to hexadecimal format for use in crypto
-  const decipher = crypto.createDecipheriv(algorithm, Buffer.from(SECRET_KEY, "hex"), Buffer.from(iv, "hex"));
-  // Decrypt the text and return the plaintext
-  return decipher.update(encrypted, "hex", "utf-8") + decipher.final("utf-8");
+  try {
+    // Removes randomness (IV) from encrypted text to decrypt
+    const [iv, encrypted] = encryptedText.split(":");
+    // Create a decipher object using the algorithm, secret key, and IV
+    // Syntax: crypto.createDecipheriv(algorithm, key, iv)
+    // Buffer.from converts the string to hexadecimal format for use in crypto
+    const decipher = crypto.createDecipheriv(algorithm, Buffer.from(SECRET_KEY, "hex"), Buffer.from(iv, "hex"));
+    // Decrypt the text and return as plaintext
+    return decipher.update(encrypted, "hex", "utf-8") + decipher.final("utf-8");
+  } catch (error) {
+    console.error("Decryption failed:", error);
+    return ""; // Handles errors by returning an empty string
+  }
 };
+
+// Added try & catch blocks as corrupted decryption can cause the server to crash
 
 /*
 
