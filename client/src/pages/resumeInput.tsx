@@ -1,6 +1,8 @@
 //input user info
 import { useState } from "react";
-import { Button, Card, CardContent } from "../components";
+import { Button, Card, CardContent, Navbar } from "../components";
+import "./resumeInput.css"; // Import the CSS file
+
 
 const ResumeInput = () => {
     //store user input for the resume
@@ -15,6 +17,7 @@ const [aiResponse, setAiResponse] = useState("");
 
   //handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    console.log(e.target);
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
   };
 
@@ -22,7 +25,7 @@ const [aiResponse, setAiResponse] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/resumes", {
+      const response = await fetch("/api/resumes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resumeData),//send data to sequelize db
@@ -51,7 +54,7 @@ const [aiResponse, setAiResponse] = useState("");
       - Email: ${resumeData.email}
       - Experience: ${resumeData.experience}`;
     try{
-      const response = await fetch("http://localhost:5000/api/ai/generate", {
+      const response = await fetch("/api/ai/generate", {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({prompt: fullPrompt}),
@@ -67,6 +70,7 @@ const [aiResponse, setAiResponse] = useState("");
 
   return (
     <div>
+      <Navbar/>
       <h1>Resume Input</h1>
       <Card>
         <CardContent>
@@ -77,7 +81,7 @@ const [aiResponse, setAiResponse] = useState("");
               placeholder="Full Name"
               value={resumeData.name}
               onChange={handleChange}
-              required
+              
             />
             <input
               type="email"
@@ -85,14 +89,14 @@ const [aiResponse, setAiResponse] = useState("");
               placeholder="Email Address"
               value={resumeData.email}
               onChange={handleChange}
-              required
+              
             />
             <textarea
               name="experience"
               placeholder="Work Experience"
               value={resumeData.experience}
               onChange={handleChange}
-              required
+            
             />
             <Button type="submit">Save Resume</Button>
           </form>

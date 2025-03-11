@@ -5,8 +5,6 @@ import cors from 'cors';
 import sequelize from './db/config/connection'; // Sequelize DB connection
 import routes from './routes'; // Import all routes
 import path from 'path';
-import { createDatabase } from './db/seeds/createDatabase'; // Import createDatabase function
-
 
 const app = express();
 const PORT: number = Number(process.env.PORT) || 5001;
@@ -36,7 +34,6 @@ app.get('*', (req, res) => {
 // Connect to PostgreSQL (Sequelize)
 const startServer = async () => {
   try {
-    //await createDatabase(); // Ensure the database is created
     await sequelize.sync({ alter: true });
     console.log('Database synced with Sequelize');
 

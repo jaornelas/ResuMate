@@ -46,7 +46,7 @@ const About = () => {
                         <Textarea
                             placeholder="Please describe the issue you've encountered."
                             value={issue}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIssue(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setIssue(e.target.value)}
                             required
                         />
                         <Button type="submit">

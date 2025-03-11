@@ -9,7 +9,7 @@ const SECRET_KEY: string = process.env.SECRET_KEY || "your_jwt_secret";
 /**
  * Register a new user (without username)
  */
-export const registerUser = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response): Promise<any> => {
   const { email, password } = req.body;
 
   // Check if email and password are provided
@@ -48,7 +48,7 @@ export const registerUser = async (req: Request, res: Response) => {
 /**
  * User login
  */
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response): Promise<any> => {
   const { email, password } = req.body;
 
   // Check if email and password are provided
