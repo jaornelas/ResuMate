@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function CustomNavbar() {
+function Navbar() {
   const currentPage = useLocation().pathname;
 
   return (
@@ -60,7 +60,7 @@ function CustomNavbar() {
   );
 }
 
-export default CustomNavbar;
+export default Navbar;
 
  {/* <ul className="nav justify-content-end mb-2">
       <li className="nav-item">
