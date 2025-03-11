@@ -72,7 +72,7 @@ const [aiResponse, setAiResponse] = useState("");
   return (
     <div>
       <Navbar/>
-      <h1>User Input</h1>
+      <h1>Resume Input</h1>
       <Card>
         <CardContent>
           <form onSubmit={handleSubmit}>
